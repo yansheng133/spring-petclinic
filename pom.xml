@@ -325,10 +325,6 @@
     </pluginRepository>
   </pluginRepositories>
 
-  <pluginGroups>
-    <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-  </pluginGroups>
-
   <profiles>
     <profile>
         <id>sonar</id>
@@ -338,7 +334,7 @@
         <properties>
             <!-- Optional URL to server. Default value is http://localhost:9000 -->
             <sonar.host.url>
-              http://sonarqube.suse.lab
+              https://sonarqube.suse.lab
             </sonar.host.url>
         </properties>
     </profile>
