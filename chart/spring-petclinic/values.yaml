@@ -38,20 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
-
-livenessProbe:
-  httpGet:
-    path: /actuator/health
-    port: http
-  initialDelaySeconds: 300
-  periodSeconds: 10
-readinessProbe:
-  httpGet:
-    path: /actuator/health
-    port: http
-  initialDelaySeconds: 60
-  periodSeconds: 10
+  port: 8080
 
 ingress:
   enabled: false
