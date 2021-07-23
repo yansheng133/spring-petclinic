@@ -8,14 +8,14 @@ WORKDIR /build
 COPY pom.xml /build
 
 # download all required dependencies into a single layer that won't change unless there's a change in pom.xml
-RUN mvn dependency:go-offline -B -DAPP_VERSION=v1.0 -DskipTests
+RUN mvn dependency:go-offline -B 
 # RUN mvn -B dependency:resolve dependency:resolve-plugins
 
 #Copy source code
 COPY src /build/src
 
 # Build application
-RUN mvn package
+RUN mvn package -DAPP_VERSION=v1.0 -DskipTests
 
 
 ## Stage 2/2 - Containerize the standalone JAR application
