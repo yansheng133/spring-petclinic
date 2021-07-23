@@ -16,14 +16,20 @@
 
 package org.springframework.samples.petclinic.system;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 class WelcomeController {
 
+	@Value("${APP_VERSION}")
+	private String appVersion;
+
 	@GetMapping("/")
-	public String welcome() {
+	public String main(Model model) {
+		model.addAttribute("appVersion", appVersion);
 		return "welcome";
 	}
 
