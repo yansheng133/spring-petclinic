@@ -11,7 +11,7 @@ pipeline {
     DEPLOY_GITREPO_URL = "github.com/your_name/spring-petclinic-helmchart.git"
     DEPLOY_GITREPO_BRANCH = "main"
     DEPLOY_GITREPO_USER = "your_name"
-    DEPLOY_GITREPO_TOKEN = credentials('spring-petclinic-helmchart-git-token')
+    DEPLOY_GITREPO_TOKEN = credentials('my-github')
   }    
   agent {
     kubernetes {
