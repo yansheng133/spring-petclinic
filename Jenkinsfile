@@ -8,9 +8,9 @@ pipeline {
   environment {
     APP_VER = "v1.0.${BUILD_ID}"
     // HARBOR_URL = ""
-    DEPLOY_GITREPO_URL = "github.com/your_name/spring-petclinic-helmchart.git"
+    DEPLOY_GITREPO_USER = "derekso"    
+    DEPLOY_GITREPO_URL = "github.com/${DEPLOY_GITREPO_USER}/spring-petclinic-helmchart.git"
     DEPLOY_GITREPO_BRANCH = "main"
-    DEPLOY_GITREPO_USER = "your_name"
     DEPLOY_GITREPO_TOKEN = credentials('my-github')
   }    
   agent {
@@ -148,7 +148,7 @@ spec:
             # After cloning
             cd deploy
             # update values.yaml
-            sed -i 's,harbor.example.com,${env.HARBOR_URL},g' values.yaml
+            sed -i -r 's,repository: (.+),repository: ${env.HARBOR_URL}/library/samples/spring-petclinic,' values.yaml
             sed -i 's/tag: v1.0.*/tag: v1.0.${env.BUILD_ID}/' values.yaml
             cat values.yaml
             git commit -am 'bump up version number'
@@ -160,5 +160,4 @@ spec:
     }   
   }
 }
-
 
